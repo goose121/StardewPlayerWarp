@@ -50,14 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChatReader.cs" />
+    <Compile Include="BringMenu.cs" />
+    <Compile Include="UI\Confirm.cs" />
+    <Compile Include="Utils\ChatReader.cs" />
     <Compile Include="ModConfig.cs" />
     <Compile Include="ModEntry.cs" />
     <Compile Include="OptionsMenu.cs" />
-    <Compile Include="PlayerBar.cs" />
-    <Compile Include="PlayerHelper.cs" />
+    <Compile Include="UI\PlayerBar.cs" />
+    <Compile Include="Helper\PlayerHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UtilityPlus.cs" />
+    <Compile Include="Utils\UtilityPlus.cs" />
+    <Compile Include="Utils\TeleportRequest.cs" />
     <Compile Include="WarpMenu.cs" />
   </ItemGroup>
   <ItemGroup>

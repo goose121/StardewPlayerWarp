@@ -12,7 +12,8 @@ namespace WarpMultiplayer
 		public long PlayerID { get; set; }
 		public ClickableComponent icon;
 		public ClickableComponent warpButton;
-		public ClickableComponent section;
+        public ClickableComponent bringButton;
+        public ClickableComponent section;
 		public bool online;
 
 		public PlayerBar(Farmer f)
@@ -45,7 +46,9 @@ namespace WarpMultiplayer
 			Color color = (warpButton.containsPoint(Game1.getMouseX(), Game1.getMouseY())) ? Color.Wheat : Color.White;
 			UtilityPlus.drawButtonWithText(b, warpButton.bounds, (online)? color : Color.Gray, "Warp", Game1.smallFont, Game1.textColor);
 
-		}
+            UtilityPlus.drawButtonWithText(b, bringButton.bounds, (online) ? color : Color.Gray, "Bring", Game1.smallFont, Game1.textColor);
+
+        }
 
 	}
 }

@@ -7,6 +7,7 @@ using StardewValley;
 using System.Collections.Generic;
 using System.Linq;
 using WarpMultiplayer.Helpers;
+using WarpMultiplayer.Utils;
 
 namespace WarpMultiplayer
 {
@@ -148,5 +149,16 @@ namespace WarpMultiplayer
                 KeyPressedList.Remove(e.Button);
             }
         }
+
+        private void OnModMessageReceived(object sender, ModMessageReceivedEventArgs e)
+        {
+            if (e.FromModID == this.ModManifest.UniqueID && e.Type == TeleportRequest.Type)
+            {
+                TeleportRequest request = e.ReadAs<TeleportRequest>();
+                
+            }
+        }
+
     }
+
 }

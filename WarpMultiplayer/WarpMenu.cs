@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using StardewValley.BellsAndWhistles;
 using Microsoft.Xna.Framework.Input;
 using System.Linq;
+using WarpMultiplayer.Utils;
+using System;
 
 namespace WarpMultiplayer
 {
@@ -17,6 +19,10 @@ namespace WarpMultiplayer
 
 		private List<PlayerBar> _playerBars;
 		private ClickableTextureComponent _optionsButton;
+        private Func<Farmer> _bringRequestAction;
+
+        public readonly string WARP = "warpAction";
+        public readonly string BRING = "bringAction";
 
 		public WarpMenu(int w = 700, int h = 400)
 			: base(Game1.viewport.Width / 2 - w / 2, Game1.viewport.Height / 2 - h / 2, w, h, true)
@@ -55,8 +61,12 @@ namespace WarpMultiplayer
 				pb.icon = new ClickableComponent(new Rectangle(iconStartX, iconStartY, 80, 80), _farmers[i].Name);
 
                 Rectangle buttonBounds = new Rectangle(iconStartX + 530, iconStartY + 16, 85, 50);
-				pb.warpButton = new ClickableComponent(buttonBounds, _farmers[i].Name);
+				pb.warpButton = new ClickableComponent(buttonBounds, _farmers[i].Name, WARP);
                 allClickableComponents.Add(pb.warpButton);
+
+                Rectangle buttonBring = new Rectangle(iconStartX + 440, iconStartY + 16, 85, 50);
+                pb.bringButton = new ClickableComponent(buttonBring, _farmers[i].Name, BRING);
+                allClickableComponents.Add(pb.bringButton);
 
                 _playerBars.Add(pb);
 			}
@@ -134,8 +144,14 @@ namespace WarpMultiplayer
                 int num = -1;
                 if (b == Buttons.LeftThumbstickDown)
                 {
-                    num = 1;
+                    num = 2;
                 }else if (b == Buttons.LeftThumbstickUp)
+                {
+                    num = -2;
+                }else if (b == Buttons.LeftThumbstickLeft)
+                {
+                    num = 1;
+                }else if (b == Buttons.LeftThumbstickRight)
                 {
                     num = -1;
                 }
@@ -159,6 +175,10 @@ namespace WarpMultiplayer
                 if (pb.warpButton.containsPoint(x, y))
                 {
                     PlayerHelper.warpFarmerToPlayer(pb.farmer);
+                } else if (pb.bringButton.containsPoint(x, y))
+                {
+                    TeleportRequest request = new TeleportRequest(pb.farmer);
+                    ModEntry.Helper?.Multiplayer.SendMessage(request, TeleportRequest.Type);
                 }
             }
             if (_optionsButton.containsPoint(x, y))

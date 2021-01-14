@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarpToFriends.Helpers
+namespace WarpMultiplayer.Helpers
 {
 	public static class PlayerHelper
 	{
@@ -26,6 +26,15 @@ namespace WarpToFriends.Helpers
 			//Old method
 			//Game1.warpFarmer(toLocation, (int)(toFarmer.position.X + 16) / Game1.tileSize, (int)toFarmer.position.Y / Game1.tileSize, false);
 		}
+
+        public static void bringFarmerToPlayer(Farmer toBring, Farmer player = null)
+        {
+            if (player == null) player = Game1.player;
+
+            // send bing request
+
+
+        }
 
 		// Testing functino for chat warps
 		public static void MultiplayerWarpTesting(Farmer toFarmer, Farmer player = null)
