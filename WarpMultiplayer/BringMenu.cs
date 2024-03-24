@@ -25,13 +25,17 @@ namespace WarpMultiplayer
         public readonly string WARP = "warpAction";
         public readonly string BRING = "bringAction";
 
+        public bool areGamepadControlsImplemented()
+        {
+            return true;
+        }
+
         public BringMenu(TeleportRequest request, int w = 700, int h = 400)
             : base(Game1.viewport.Width / 2 - w / 2, Game1.viewport.Height / 2 - h / 2, w, h, true)
         {
             _farmers = PlayerHelper.GetAllCreatedFarmers();
             base.width = w;
             base.height = h;
-            this.gamePadControlsImplemented = true;
             this.allClickableComponents = new List<ClickableComponent>();
 
             this.initializeUpperRightCloseButton();
