@@ -18,13 +18,17 @@ namespace WarpMultiplayer
 		private List<PlayerBar> _playerBars;
 		private ClickableTextureComponent _optionsButton;
 
-		public WarpMenu(int w = 700, int h = 400)
+        public bool areGamepadControlsImplemented()
+        {
+            return true;
+        }
+
+        public WarpMenu(int w = 700, int h = 400)
 			: base(Game1.viewport.Width / 2 - w / 2, Game1.viewport.Height / 2 - h / 2, w, h, true)
 		{
 			_farmers = PlayerHelper.GetAllCreatedFarmers();
 			base.width = w;
 			base.height = h;
-            this.gamePadControlsImplemented = true;
             this.allClickableComponents = new List<ClickableComponent>();
 
             this.initializeUpperRightCloseButton();

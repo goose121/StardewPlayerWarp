@@ -1,7 +1,7 @@
 {
   "Name": "WarpMultiplayer",
   "Author": "Strato35",
-  "Version": "1.1.0",
+  "Version": "1.2.0",
   "Description": "Warp to another player",
   "UniqueID": "Strato35.WarpMultiplayer",
   "EntryDll": "WarpMultiplayer.dll",
