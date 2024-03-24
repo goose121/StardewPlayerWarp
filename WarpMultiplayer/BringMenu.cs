@@ -45,24 +45,27 @@ namespace WarpMultiplayer
 
         public void setUpConfirm()
         {
-            Confirm c = new Confirm(_farmers[i]);
+            for (int i = 0; i < _farmers.Count; i++)
+            {
+                Confirm c = new Confirm(_farmers[i]);
 
-            int xPos = xPositionOnScreen;
-            int yPos = yPositionOnScreen;
+                int xPos = xPositionOnScreen;
+                int yPos = yPositionOnScreen;
 
-            Rectangle sectionBounds = new Rectangle(xPos + 16, yPos + 16, width - 32, height / 4);
-            c.section = new ClickableComponent(sectionBounds, _farmers[i].Name);
+                Rectangle sectionBounds = new Rectangle(xPos + 16, yPos + 16, width - 32, height / 4);
+                c.section = new ClickableComponent(sectionBounds, _farmers[i].Name);
 
-            int iconStartX = xPos + 30;
-            int iconStartY = yPos + 20;
+                int iconStartX = xPos + 30;
+                int iconStartY = yPos + 20;
 
-            Rectangle buttonConfirm = new Rectangle(c.section.bounds.Center.X - 200, c.section.bounds.Center.Y, 100, 50);
-            c.confirmButton = new ClickableComponent(buttonConfirm, _farmers[i].Name, WARP);
-            allClickableComponents.Add(c.confirmButton);
+                Rectangle buttonConfirm = new Rectangle(c.section.bounds.Center.X - 200, c.section.bounds.Center.Y, 100, 50);
+                c.confirmButton = new ClickableComponent(buttonConfirm, _farmers[i].Name, WARP);
+                allClickableComponents.Add(c.confirmButton);
 
-            Rectangle buttonCancel = new Rectangle(c.section.bounds.Center.X + 100, c.section.bounds.Center.Y, 100, 50);
-            c.cancelButton = new ClickableComponent(buttonCancel, _farmers[i].Name, BRING);
-            allClickableComponents.Add(c.cancelButton);
+                Rectangle buttonCancel = new Rectangle(c.section.bounds.Center.X + 100, c.section.bounds.Center.Y, 100, 50);
+                c.cancelButton = new ClickableComponent(buttonCancel, _farmers[i].Name, BRING);
+                allClickableComponents.Add(c.cancelButton);
+            }
 
         }
 
